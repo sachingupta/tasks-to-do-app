@@ -5,8 +5,8 @@ import "./App.css";
 interface ITodoProps {
     index: number;
     todo: ITodo;
-    onComplete: (index: number) => void;
-    onRemove: (index: number) => void;
+    onComplete: (id: string) => void;
+    onRemove: (id: string) => void;
 }
 
 export const Todo = (props: ITodoProps) => {
@@ -19,8 +19,8 @@ export const Todo = (props: ITodoProps) => {
           {todo.title}
     
           <div>
-            <button onClick={() => { props.onComplete(props.index) }}>Complete</button>
-            <button onClick={() => { props.onRemove(props.index) }}>x</button>
+            <button onClick={() => { props.onComplete(todo._id) }}>Complete</button>
+            <button onClick={() => { props.onRemove(todo._id) }}>x</button>
           </div>
         </div>
       );

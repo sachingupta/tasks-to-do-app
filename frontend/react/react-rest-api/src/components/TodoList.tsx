@@ -5,8 +5,8 @@ import { Todo } from "./Todo";
 
 interface ITodoListRendererProps {
     todos: ITodo[];
-    onComplete: (index: number) => void;
-    onRemove: (index: number) => void;
+    onComplete: (id: string) => void;
+    onRemove: (id: string) => void;
 }
 
 export const TodoListRenderer = (props: ITodoListRendererProps) => {

@@ -13,27 +13,77 @@ export const HooksTodoApp = () => {
   const [toggleThemeCount, setToggleThemeCount] = useState(0);
 
   const addTodo = (todoText: string) => {
-    const todo: ITodo = { title: todoText, status: 'Active' };
+    const todo = { title: todoText, status: 'Active' };
     const newTodos = [...todos, todo];
-    setTodos(newTodos);
+    let requestBody = todo;
+    fetch(API_URL + '/tasks', {
+      method: 'POST',
+      body: JSON.stringify(requestBody),
+      headers: {
+          'Content-Type': 'application/json'
+      }
+     })
+      .then((res) => {
+          if (res.status !== 200 && res.status !== 201) {
+              throw new Error('Failed');
+          }
+          return res.json();
+      })
+      .then(resData => {
+          console.log(JSON.stringify(resData));
+          setTodos(resData);
+      })
+      .catch(err => {
+          console.log(err);
+      })
   }
 
-  const completeTodo = (index: number) => {
-    const newTodos = [...todos];
-    newTodos[index].isCompleted = true;
-    setTodos(newTodos);
+  const completeTodo = (id: string) => {
+    let requestBody = {
+      status: 'Complete'
+    };
+    fetch(API_URL + '/tasks/' + id, {
+      method: 'PUT',
+      body: JSON.stringify(requestBody),
+      headers: {
+          'Content-Type': 'application/json'
+      }
+     })
+      .then((res) => {
+          if (res.status !== 200 && res.status !== 201) {
+              throw new Error('Failed');
+          }
+          return res.json();
+      })
+      .then(resData => {
+          console.log(JSON.stringify(resData));
+          setTodos(resData);
+      })
+      .catch(err => {
+          console.log(err);
+      })
   }
 
-  const removeTodo = (index: number) => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
-  }
-
-  const toggleTheme = () => {
-    const newTheme = (theme === themes.dark ? themes.light : themes.dark);
-    setTheme(newTheme);
-    setToggleThemeCount(toggleThemeCount + 1);
+  const removeTodo = (id: string) => {
+    fetch(API_URL + '/tasks/' + id, {
+      method: 'DELETE',
+      headers: {
+          'Content-Type': 'application/json'
+      }
+     })
+      .then((res) => {
+          if (res.status !== 200 && res.status !== 201) {
+              throw new Error('Failed');
+          }
+          return res.json();
+      })
+      .then(resData => {
+          console.log(JSON.stringify(resData));
+          setTodos(resData);
+      })
+      .catch(err => {
+          console.log(err);
+      })
   }
 
   const fetchTasks = () => {
