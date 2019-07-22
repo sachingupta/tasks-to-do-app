@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
@@ -6,25 +6,18 @@ import { ITodo } from "./components/IApp";
 import { HooksTodoApp } from "./components/App";
 
 
-const todos: ITodo[] = [
-    { text: "Learn1204 about React" },
-    { text: "Meet friend for lunch" },
-    { text: "Build really cool todo app" }
-]
-
 interface ITodoAppProps {
     todos: ITodo[];
 }
 
-const TodoApp = (props: ITodoAppProps) => {
-    const { todos } = props;
+const TodoApp = () => {
     return (
-        <HooksTodoApp todos={todos} />
+        <HooksTodoApp />
     );
 }
 
 ReactDOM.render(
-    <TodoApp todos={todos} />,
+    <TodoApp />,
     document.getElementById("root")
 );
 

@@ -14,9 +14,9 @@ export const Todo = (props: ITodoProps) => {
     return  (
         <div
           className="todo"
-          style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
+          style={{ textDecoration: todo.status == 'Complete' ? "line-through" : "" }}
           >
-          {todo.text}
+          {todo.title}
     
           <div>
             <button onClick={() => { props.onComplete(props.index) }}>Complete</button>

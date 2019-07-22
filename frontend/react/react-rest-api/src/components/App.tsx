@@ -5,18 +5,15 @@ import { TodoListRenderer } from "./TodoList";
 import "./App.css";
 import { TodoFormContainer } from "./TodoFormContainer";
 import { ThemeContext, themes } from "./ThemeContext";
+import { API_URL } from '../constants';
 
-interface IHooksAppProps {
-  todos: ITodo[];
-}
-
-export const HooksTodoApp = (props: IHooksAppProps) => {
-  const [todos, setTodos] = useState(props.todos);
+export const HooksTodoApp = () => {
+  const [todos, setTodos] = useState([] as any);
   const [theme, setTheme] = useState(themes.light);
   const [toggleThemeCount, setToggleThemeCount] = useState(0);
 
   const addTodo = (todoText: string) => {
-    const todo: ITodo = { text: todoText };
+    const todo: ITodo = { title: todoText, status: 'Active' };
     const newTodos = [...todos, todo];
     setTodos(newTodos);
   }

@@ -1,4 +1,4 @@
 export interface ITodo {
-    text: string;
-    isCompleted?: boolean;
+    title: string;
+    status: string;
 }
