@@ -17,6 +17,9 @@ router.get('/', (req, res, next) => {
 router.post('/', (req, res, next) => {
     dbHandler.addTask(req.body.title, req.body.status)
     .then((result) => {
+        return dbHandler.getTasks();
+    })
+    .then((result) => {
         res.status(200).json(result);
     })
     .catch( err => { 
@@ -41,6 +44,9 @@ router.put('/:taskId', (req, res, next) => {
     const id = req.params.taskId;
     dbHandler.updateTask(id, req.body.title, req.body.status)
     .then((result) => {
+        return dbHandler.getTasks();
+    })
+    .then((result) => {
         res.status(200).json(result);
     })
     .catch( err => { 
@@ -52,6 +58,9 @@ router.put('/:taskId', (req, res, next) => {
 router.patch('/:taskId', (req, res, next) => {
     const id = req.params.taskId;
     dbHandler.updateTask(id, req.body.title, req.body.status)
+    .then((result) => {
+        return dbHandler.getTasks();
+    })
     .then((result) => {
         res.status(200).json(result);
     })
@@ -65,6 +74,9 @@ router.delete('/:taskId', (req, res, next) => {
     const id = req.params.taskId;
 
     dbHandler.deleteTask(id)
+    .then((result) => {
+        return dbHandler.getTasks();
+    })
     .then((result) => {
         res.status(200).json(result);
     })
