@@ -1,43 +1,76 @@
 const express = require('express');
 const router = express.Router();
 
+dbHandler = require('../../mongodb/mongodbUtils');
+
 router.get('/', (req, res, next) => {
-    res.status(200).json({
-        message: "Handling Get requests to /tasks"
+    dbHandler.getTasks()
+    .then((result) => {
+        res.status(200).json(result);
+    })
+    .catch( err => { 
+        console.log(err);
+        res.status(500).json({error: err});
     });
 });
 
 router.post('/', (req, res, next) => {
-    const task = {
-        title: req.body.title
-    }
-    res.status(200).json({
-        message: "Handling POST requests to /tasks",
-        task: task
+    dbHandler.addTask(req.body.title, req.body.status)
+    .then((result) => {
+        res.status(200).json(result);
+    })
+    .catch( err => { 
+        console.log(err);
+        res.status(500).json({error: err});
     });
 });
 
 router.get('/:taskId', (req, res, next) => {
     const id = req.params.taskId;
-    res.status(200).json({
-        message: "Handling get requests to /tasks",
-        id: id
+    dbHandler.getTask(id)
+    .then((result) => {
+        res.status(200).json(result);
+    })
+    .catch( err => { 
+        console.log(err);
+        res.status(500).json({error: err});
     });
 });
 
 router.put('/:taskId', (req, res, next) => {
     const id = req.params.taskId;
-    res.status(200).json({
-        message: "Handling update requests to /tasks",
-        id: id
+    dbHandler.updateTask(id, req.body.title, req.body.status)
+    .then((result) => {
+        res.status(200).json(result);
+    })
+    .catch( err => { 
+        console.log(err);
+        res.status(500).json({error: err});
+    });
+});
+
+router.patch('/:taskId', (req, res, next) => {
+    const id = req.params.taskId;
+    dbHandler.updateTask(id, req.body.title, req.body.status)
+    .then((result) => {
+        res.status(200).json(result);
+    })
+    .catch( err => { 
+        console.log(err);
+        res.status(500).json({error: err});
     });
 });
 
 router.delete('/:taskId', (req, res, next) => {
     const id = req.params.taskId;
-    res.status(200).json({
-        message: "Handling delete requests to /tasks",
-        id: id
+
+    dbHandler.deleteTask(id)
+    .then((result) => {
+        res.status(200).json(result);
+    })
+    .catch( err => { 
+        console.log(err);
+        res.status(500).json({error: err});
     });
 });
 
