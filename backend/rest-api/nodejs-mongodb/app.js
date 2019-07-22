@@ -2,8 +2,18 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const bodyeParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const tasksRoutes = require('./api/routes/tasks');
+const dbUrl = `mongodb+srv://${process.env.MONGO_ATLAS_USER}:${process.env.MONGO_ATLAS_PW}@cluster0-xh2t1.mongodb.net/test?retryWrites=true&w=majority`;
+
+mongoose.connect(dbUrl, { useNewUrlParser: true })
+.then((client) => {
+    console.log("connected");
+})
+.catch((error) => {
+    console.log('Error getting db connection' + err);
+});
 
 // setup logging middleware using morgan
 app.use(morgan('dev'));

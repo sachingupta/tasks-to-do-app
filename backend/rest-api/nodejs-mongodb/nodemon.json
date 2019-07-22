@@ -1,0 +1,6 @@
+{
+    "env": {
+        "MONGO_ATLAS_USER": "saching",
+        "MONGO_ATLAS_PW": "test@123"
+    }
+}
