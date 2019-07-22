@@ -36,6 +36,32 @@ export const HooksTodoApp = () => {
     setToggleThemeCount(toggleThemeCount + 1);
   }
 
+  const fetchTasks = () => {
+    fetch(API_URL + '/tasks', {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json'
+      }
+     })
+      .then((res) => {
+          if (res.status !== 200 && res.status !== 201) {
+              throw new Error('Failed');
+          }
+          return res.json();
+      })
+      .then(resData => {
+          console.log(JSON.stringify(resData));
+          setTodos(resData);
+      })
+      .catch(err => {
+          console.log(err);
+      })
+  }
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
   useEffect(() => {
   /*
     - By using this Hook, you tell React that your component needs to do something after render
