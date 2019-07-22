@@ -8,8 +8,12 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
+    const task = {
+        title: req.body.title
+    }
     res.status(200).json({
-        message: "Handling POST requests to /tasks"
+        message: "Handling POST requests to /tasks",
+        task: task
     });
 });
 
@@ -21,7 +25,7 @@ router.get('/:taskId', (req, res, next) => {
     });
 });
 
-router.patch('/:taskId', (req, res, next) => {
+router.put('/:taskId', (req, res, next) => {
     const id = req.params.taskId;
     res.status(200).json({
         message: "Handling update requests to /tasks",
