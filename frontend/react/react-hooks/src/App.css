@@ -1,6 +1,5 @@
 .app {
     background: #209cee;
-    padding: 30px;
-    margin-right: 20px;
+    box-sizing: border-box;
     width: 100%;
   }
