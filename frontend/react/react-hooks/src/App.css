@@ -1,7 +1,17 @@
+html , body {
+  width: 100%;
+  overflow-x: hidden;
+  text-align: center;
+  box-sizing: border-box;
+}
 .app {
   /* background: #209cee;
   box-sizing: border-box;
   width: 100%; */
-  background: #D3D3D3;
+  background: #dddddd;
   display: inline-block;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+  padding: 10px;
 }

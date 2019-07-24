@@ -26,16 +26,8 @@ export const TodoListRenderer = (props: ITodoListRendererProps) => {
         />);
     }
     return (
-        <div className="toDoHeader">
-            <div className="toDoTitle">
-                <img className="todoImage"
-                    src={todoImage}
-                    alt="Todo check"></img>
-                ToDo
-            </div>
-            <div className="todo-list">
-                {todosRender}
-            </div>
-        </div>
+        <div className="todo-list">
+        {todosRender}
+    </div>
     );
 }

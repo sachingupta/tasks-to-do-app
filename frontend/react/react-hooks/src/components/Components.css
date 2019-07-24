@@ -2,7 +2,7 @@
   .todo-list {
     /* background: #e8e8e8; */
     border-radius: 4px;
-    padding: 5px;
+    box-sizing: border-box;
   }
   
   .todo {
@@ -22,11 +22,11 @@
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
     padding: 7px;
     font-size: 12px;
-    margin: 0 25px 25px 25px;
     border-radius: 3px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-sizing: border-box;
   }
 
   .todo-input {
