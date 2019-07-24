@@ -10,12 +10,15 @@ interface ITodoFormProps {
 
 export function TodoForm(props: ITodoFormProps){
     return (
-        <form onSubmit={props.onSubmit}>
-          <input className="todo-input"
-            type="text"
-            value={props.value}
-            onChange={props.onChange}
-          />
-        </form>
+      <form className="todo-input-form"
+        onSubmit={props.onSubmit}>
+        <input className="todo-input"
+          type="text"
+          placeholder="Type your todo"
+          value={props.value}
+          onChange={props.onChange}
+        />
+        <button className="addToDo">+</button>
+      </form>
       );
 }
