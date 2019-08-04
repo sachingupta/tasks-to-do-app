@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { ITodo } from "./components/IApp";
-import { HooksTodoApp } from "./components/App";
+import { App } from "./App";
 
 
 const todos: ITodo[] = [
-    { text: "Learn1204 about React" },
-    { text: "Meet friend for lunch" },
-    { text: "Build really cool todo app" }
+    { id: "0", title: "Learn1204 about React", status: "Active" },
+    { id: "1", title: "Meet friend for lunch", status: "Active"},
+    { id: "2", title: "Build really cool todo app", status: "Active" }
 ]
 
 interface ITodoAppProps {
@@ -19,7 +19,7 @@ interface ITodoAppProps {
 const TodoApp = (props: ITodoAppProps) => {
     const { todos } = props;
     return (
-        <HooksTodoApp todos={todos} />
+        <App todos={todos} />
     );
 }
 

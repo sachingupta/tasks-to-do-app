@@ -1,12 +1,11 @@
 import * as React from "react";
 import { ITodo } from "./IApp";
-import "./App.css"; 
+import "./Components.css"; 
 
 interface ITodoProps {
-    index: number;
     todo: ITodo;
-    onComplete: (index: number) => void;
-    onRemove: (index: number) => void;
+    onComplete: (id: string) => void;
+    onRemove: (id: string) => void;
 }
 
 export const Todo = (props: ITodoProps) => {
@@ -14,13 +13,13 @@ export const Todo = (props: ITodoProps) => {
     return  (
         <div
           className="todo"
-          style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
+          style={{ textDecoration: todo.status == "Complete" ? "line-through" : "" }}
           >
-          {todo.text}
+          {todo.title}
     
           <div>
-            <button onClick={() => { props.onComplete(props.index) }}>Complete</button>
-            <button onClick={() => { props.onRemove(props.index) }}>x</button>
+            <button onClick={() => { props.onComplete(todo.id) }}>Complete</button>
+            <button onClick={() => { props.onRemove(todo.id) }}>x</button>
           </div>
         </div>
       );
