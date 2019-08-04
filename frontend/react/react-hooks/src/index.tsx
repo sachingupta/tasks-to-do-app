@@ -8,7 +8,7 @@ import { App } from "./App";
 
 const todos: ITodo[] = [
     { id: "0", title: "Learn1204 about React", status: "Active" },
-    { id: "1", title: "Meet friend for lunch", status: "Active"},
+    { id: "1", title: "Meet friend for lunch", status: "Active" },
     { id: "2", title: "Build really cool todo app", status: "Active" }
 ]
 
