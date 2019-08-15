@@ -7,6 +7,7 @@ import Loadable from 'react-loadable';
 import  { MyLoadingComponent } from './components/MyLoading';
 // Static import
 import { Home } from './routes/Home';
+import { Collection } from './routes/Collection';
 // import { About } from './routes/About';
 // import { ContactContainer as Contact } from './routes/ContactContainer';
 
@@ -40,7 +41,8 @@ export const App: React.FC = () => {
       <Router>
         <Nav />
         <Switch>
-          <Route exact path="/" component={Home} />
+         <Route exact path="/" component={Home} />
+         <Route path="/collection" component={Collection} />
          <Route path="/about" component={About} />
          <Route path="/location" component={Location} />
           <Suspense fallback={<Loading />}>

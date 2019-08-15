@@ -1,0 +1,10 @@
+.item-list {
+ list-style: none;
+}
+
+.item{
+    border: 1px solid blue;
+    background-color: aliceblue;
+    margin: 10px;
+    padding: 10px;
+}
