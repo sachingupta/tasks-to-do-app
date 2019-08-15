@@ -42,3 +42,15 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+# Tutorials
+## Links 
+https://www.codementor.io/blog/react-optimization-5wiwjnf9hj
+
+## 1. Using Immutable Data Structures
+Zero side-effects;
+Immutable data objects are simpler to create, test, and use;
+Helps prevent temporal coupling;
+Easier to track changes.
+. For arrays: use [].concat or es6 [ ...params]
+. For objects: use Object.assign({}, ...) or es6 {...params}

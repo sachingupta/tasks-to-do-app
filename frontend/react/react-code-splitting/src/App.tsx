@@ -11,9 +11,9 @@ import { Home } from './routes/Home';
 // import { ContactContainer as Contact } from './routes/ContactContainer';
 
 // Dynamic import
-const About = asyncComponent(() => import(/* webpackChunkName: "home" */'./routes/About'));
+ const About = asyncComponent(() => import(/* webpackChunkName: "about" */'./routes/About'));
 const Location = Loadable({
-  loader: () => import('./routes/Location'),
+  loader: () => import(/* webpackChunkName: "location" */'./routes/Location'),
   loading: MyLoadingComponent,
 });
 const Contact = React.lazy(() => import(/* webpackChunkName: "contact" */'./routes/ContactContainer'));
@@ -39,14 +39,14 @@ export const App: React.FC = () => {
     <div className="App">
       <Router>
         <Nav />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/location" component={Location} />
-            <Suspense fallback={<Loading />}>
-            <Route path="/contact" component={Contact} />
-            </Suspense>
-          </Switch>
+        <Switch>
+          <Route exact path="/" component={Home} />
+         <Route path="/about" component={About} />
+         <Route path="/location" component={Location} />
+          <Suspense fallback={<Loading />}>
+           <Route path="/contact" component={Contact} />
+          </Suspense>
+        </Switch>
       </Router>
     </div>
   );

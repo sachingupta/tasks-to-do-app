@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { MyLoadingComponent } from "./MyLoading";
 
 export function asyncComponent(importComponent: any) {
   class AsyncComponent extends Component {
