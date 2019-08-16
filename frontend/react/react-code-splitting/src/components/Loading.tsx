@@ -1,4 +1,5 @@
 import React from 'react';
+import { Loader } from '@stardust-ui/react'
 export const Loading = () => {
-    return <div>Loading...</div>
+    return <Loader label="Loading..." />
 }

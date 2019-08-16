@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import './App.css';
 import { Loading } from './components/Loading';
 import { Nav } from './components/Nav';
 import { asyncComponent } from './components/asyncComponent';
@@ -12,7 +13,7 @@ import { Collection } from './routes/Collection';
 // import { ContactContainer as Contact } from './routes/ContactContainer';
 
 // Dynamic import
- const About = asyncComponent(() => import(/* webpackChunkName: "about" */'./routes/About'));
+const About = asyncComponent(() => import(/* webpackChunkName: "about" */'./routes/About'));
 const Location = Loadable({
   loader: () => import(/* webpackChunkName: "location" */'./routes/Location'),
   loading: MyLoadingComponent,

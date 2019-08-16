@@ -25,5 +25,5 @@ export const CollectionList = () => {
 		return <Loading />;
 	}
 
-	return <List id="pokemon-list" title="Pokemon list" items={items} />;
+	return <List title="Collection" items={items} />;
 }

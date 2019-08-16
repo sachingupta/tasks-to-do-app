@@ -16,7 +16,8 @@ export const CollectionListInternal = () => {
 }
 
 export const CollectionList = () => {
-	return (<Suspense fallback={<Loading />}>
+	return (
+	<Suspense fallback={<Loading />}>
 			<CollectionListInternal />>
 	</Suspense>);
 }
