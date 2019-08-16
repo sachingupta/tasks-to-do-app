@@ -1,8 +1,8 @@
 import React, { useState, useEffect, Suspense } from 'react';
-import { Loading } from '../../Loading';
-import { List } from '../../list/List';
+import { Loading } from '../Loading';
+import { List } from '../list/List';
 import { unstable_createResource  } from 'react-cache';
-import { sleeper } from './api';
+import { sleeper } from './api/api2';
 
 const itemResource: any = unstable_createResource(() => {
 	return fetch('https://jsonplaceholder.typicode.com/todos')

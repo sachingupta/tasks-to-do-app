@@ -1,5 +1,5 @@
 import React from 'react';
-import { CollectionList } from '../components/data-fetching/suspense/MyList';
+import { CollectionList } from '../components/data-fetching/MyList2';
 
 export const Collection = ()=> {
     return (

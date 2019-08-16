@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Loading } from '../../Loading';
-import { List } from '../../list/List';
-import * as ApiService from './api';
+import { Loading } from '../Loading';
+import { List } from '../list/List';
+import * as ApiService from './api/api';
 
 export const CollectionList = () => {
 	// 1. we initiate a loading state
