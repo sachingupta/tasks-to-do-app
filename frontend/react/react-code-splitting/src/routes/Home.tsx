@@ -1,15 +1,13 @@
 import React from 'react';
-/* static import */
+// static import
 // import * as math from './math';
-// import Welcome from './Welcome';
+// console.log(math.add(16, 26)); // 42
 
 /** Dynamic import */
 const math = import(/* webpackChunkName: "math" */"../math").then(math => {
   console.log(math.add(16, 26));
 });
 
-/* static import */
-//console.log(math.add(16, 26)); // 42
 
 export const Home: React.FC = () => {
     return (

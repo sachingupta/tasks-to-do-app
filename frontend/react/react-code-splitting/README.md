@@ -7,11 +7,21 @@
 * OnDemand downloading code (Loading the code bundle/ components dynamically When the user clicks on Route or based on user action) is called lazy loading. 
 * Lazy loading also can be called as code splitting.
 
+```javascript
+const math = import(/* webpackChunkName: "math" */"../math").then(math => {
+  console.log(math.add(16, 26));
+});
+```
+
 ## Demo asyncComponent custom react lazy
 
 ## Demo of loadable component
 
 ## What is **React.lazy()**
+```javascript
+const Contact = React.lazy(() => import(/* webpackChunkName: "contact" */'./routes/ContactContainer'));
+```
+
 * It is a new function in react that lets you load react components lazily through code splitting without help from any additional libraries.
 
 * Lazy loading is the technique of rendering only-needed or critical user interface items first, then quietly unrolling the non-critical items later. 
@@ -21,6 +31,11 @@
 * The React.lazy function lets you render a dynamic import as a regular component.
 
 ## What is **Suspense** ?
+```html
+    <Suspense fallback={<Loading />}>
+        <Route path="/contact" component={Contact} />
+    </Suspense>
+```
 * React Suspense allows you to suspend components rendering until a condition is met. 
 * While waiting, a fallback component is rendered. 
 
@@ -51,7 +66,28 @@ using React.lazy + dynamic import,
 * No more isLoading state to initiate and to set, no more useEffect to fetch the data, the code just feels synchronous. Suspense handles all the asynchronous state, and coordinates the components rendering.
 
 * Throwing a fetch Promise can seem weird. If it bothers you, React core team is working on React-cache to manage resources.
+```html
+import { unstable_createResource  } from 'react-cache';
+import { sleeper } from './api/api2';
 
+const itemResource: any = unstable_createResource(() => {
+	return fetch('https://jsonplaceholder.typicode.com/todos')
+	.then(resp => resp.json())
+	.then(sleeper(2000))
+});
+
+export const CollectionListInternal = () => {
+	const items = itemResource.read();
+	return <List id="pokemon-list" title="Pokemon list" items={items} />;
+}
+
+export const CollectionList = () => {
+	return (
+	<Suspense fallback={<Loading />}>
+			<CollectionListInternal />>
+	</Suspense>);
+}
+```
 ## How to start code splitting
 1. Begin at the route level. Routes are the simplest way to identify points of your application that can be split. The React docs show how Suspense can be used along with react-router.
 
