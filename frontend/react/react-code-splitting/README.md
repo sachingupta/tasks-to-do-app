@@ -31,6 +31,59 @@ const Contact = React.lazy(() => import(/* webpackChunkName: "contact" */'./rout
 * The React.lazy function lets you render a dynamic import as a regular component.
 
 ## What is **Suspense** ?
+
+### Suspense implementation
+```javascript
+class Suspense extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      promise: null
+    };
+  }
+
+  componentDidCatch(e) {
+
+    // Drake meme where he says no to errors here.
+    if (e instanceof Error) {
+      throw e;
+    }
+
+    // Drake meme where he says yes to promises here.
+    if (e instanceof Promise) {
+      this.setState({
+        promise: e
+      }, () => {
+
+        // When the promise finishes, go back to rendering the original children.
+        e.then(() => {
+          this.setState({ promise: null });
+        });
+      });
+    }
+
+    // This line isn't compatible with the Drake meme format.
+    else {
+      throw e;
+    }
+  }
+
+  render() {
+    if (this.state.promise) {
+      return this.props.fallback;
+    }
+    return this.props.children;
+  }
+}
+
+/*
+<Suspense fallback={<Loading />}>
+  <PromiseThrower />
+</Suspense>
+*/
+```
+
 ```html
     <Suspense fallback={<Loading />}>
         <Route path="/contact" component={Contact} />
@@ -107,6 +160,8 @@ https://reactjs.org/docs/error-boundaries.html
 https://reactjs.org/docs/code-splitting.html
 https://developers.google.com/web/fundamentals/performance/optimizing-javascript/code-splitting/
 https://www.youtube.com/watch?v=nLF0n9SACd4
+
+https://reactresources.com/topics/suspense
 
 
 
