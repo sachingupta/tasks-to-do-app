@@ -1,4 +1,4 @@
-# Code Splitting usinf React.Lazy and suspense
+# Code Splitting using React.Lazy and suspense
 ## What is lazy loading/code splitting?
 * Code splitting is a technique to reduce javascript bundle size by creating multiple chunks instead of a big unique one.
 
